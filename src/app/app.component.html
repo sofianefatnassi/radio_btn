@@ -1,0 +1,47 @@
+<div class="jumbotron text-center">
+	<h1 class="display-5">
+		Radio Buttons in Angular
+	</h1>
+</div>
+
+<div class="container">
+	<div class="row custom-wrapper">
+		<div class="col-md-12">
+
+			<!-- Form starts -->
+			<form id="myform" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+				<!-- Gender -->
+				<div class="group-gap">
+					<h5 class="mb-3">Gender</h5>
+					<div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="3" class="custom-control-input" formControlName="gender" name="gender" value='3'>
+              <label for="3" style="position: initial!important" class="custom-control-label">plop</label>
+            </div>
+
+						<div class="custom-control custom-radio" *ngFor="let item of test; let i = index">
+							<input id="{{item.adresse.id}}" type="radio" class="custom-control-input" 
+              value="{{item.adresse.value}}" name="gender" formControlName="gender">
+              <span *ngIf="item.numsVoie.length > 0">
+              <select style="padding-left: 0px; height: 29px; font-size: 15px" formControlName="voies">
+                <option *ngFor="let item2 of item.numsVoie">
+                    {{item2}}
+                  </option>
+              </select>
+</span>
+              <label class="custom-control-label" style="position: initial!important" for="{{item.adresse.id}}">{{item.adresse.value}}</label>
+            </div>
+
+            <div class="invalid-feedback" *ngIf="isSubmitted && myForm.errors?.required">
+              <p>Please select either value</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- Submit Button -->
+          
+      </form><!-- Form ends -->
+<button type="submit" class="btn btn-primary"  form="myform" [disabled]="!registrationForm.valid">Register</button>
+    </div>
+  </div>
+</div>
