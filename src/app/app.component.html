@@ -15,20 +15,20 @@
 					<h5 class="mb-3">Gender</h5>
 					<div class="d-block my-3">
             <div class="custom-control custom-radio">
-              <input type="radio" id="3" class="custom-control-input" formControlName="gender" name="gender" value='3'>
-              <label for="3" style="position: initial!important" class="custom-control-label">plop</label>
+              <input type="radio" id="plop" class="custom-control-input" (ngModelChange)="detectChange($event)" formControlName="gender" name="gender" value='plop'>
+              <label for="plop" style="position: initial!important" class="custom-control-label">plop</label>
             </div>
 
-						<div class="custom-control custom-radio" *ngFor="let item of test; let i = index">
+						<div class="custom-control custom-radio"  *ngFor="let item of test; let i = index">
 							<input id="{{item.adresse.id}}" type="radio" class="custom-control-input" 
-              value="{{item.adresse.value}}" name="gender" formControlName="gender">
+              value="{{item.adresse.value}}" name="gender" formControlName="gender" (ngModelChange)="detectChange($event)">
               <span *ngIf="item.numsVoie.length > 0">
               <select style="padding-left: 0px; height: 29px; font-size: 15px" formControlName="voies">
-                <option *ngFor="let item2 of item.numsVoie">
+                <option *ngFor="let item2 of item.numsVoie?.reverse()">
                     {{item2}}
                   </option>
               </select>
-</span>
+            </span>
               <label class="custom-control-label" style="position: initial!important" for="{{item.adresse.id}}">{{item.adresse.value}}</label>
             </div>
 
